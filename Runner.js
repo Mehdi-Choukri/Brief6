@@ -6,6 +6,7 @@ const hbs = require('hbs');
 
 const dataAccess = require('./MyModules/dataAccess');
 const app = express();
+
 const extentionsPath = path.join(__dirname, './Extensions');
 
 var bodyParser = require('body-parser'),
@@ -56,7 +57,7 @@ app.get("/Signup.hbs", (req, res) => {
   });
 
 // Port
-var port = process.env.PORT || 3000;
+var port =  3000;
 app.listen(port,() => console.log(`Listening on port ${port}...`));
 /*server local*/
  
