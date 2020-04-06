@@ -1,7 +1,9 @@
 const path = require('path');
 
 const express = require("express");
+
 const hbs = require('hbs');
+
 const dataAccess = require('./MyModules/dataAccess');
 const app = express();
 const extentionsPath = path.join(__dirname, './Extensions');
@@ -17,9 +19,10 @@ var Departement_Data= dataAccess.LoadJson('Data/Departement.json');
 urlencodedParser = bodyParser.urlencoded({ extended: false });
 // *Define paths for express config
 const viewPath = path.join(__dirname, './views');
+
 // *setup handlebars engine and views location
 app.set('view engine', 'hbs');
-app.set('vien engine','pug');
+// app.set('vien engine','pug');
  
 app.set('views', viewPath)
 
@@ -30,12 +33,14 @@ app.use("/Script",express.static("./Script"))
 app.use("/Images",express.static("./Images"))
 
 // Lancement des pages
-app.get("/Q&A.hbs", (req, res) => {
-  res.render('Q&A');
-});
+// app.get("/Q&A.hbs", (req, res) => {
+//   res.render('Q&A');
+// });
 app.get("/QA.hbs", (req, res) => {
+
   res.render('QA',{Departement_Data});
   console.log(Departement_Data)
+ 
 });
  
 app.get("/Signup.hbs", (req, res) => {
@@ -72,20 +77,9 @@ app.post('/submit',urlencodedParser, function (req, res) {
 
    } 
    console.log(req.body);
-   
-  
-
-
-   
-
-   var Personne1 = new Personne(req.body.Nom,req.body.Prenom,req.body.CIN,req.body.Qualite,req.body.tel,'true') ;
-
-
-   
  
-     
-     
-
+   var Personne1 = new Personne(req.body.Nom,req.body.Prenom,req.body.CIN,req.body.Qualite,req.body.tel,'true') ;
+ 
       // data.persons.forEach(element => {
         
       //     console.log(element.Cin.split("#"));
@@ -98,8 +92,6 @@ app.post('/submit',urlencodedParser, function (req, res) {
         list_Cin [j]= element.Cin.split("#") ;
         j++;
     });
-    
- 
 
       console.log(req.body.CIN);
  
@@ -121,10 +113,6 @@ app.post('/submit',urlencodedParser, function (req, res) {
     }
 
   }
-   
-    
- 
-    
  
     if(trouve==false)
     {
